@@ -9,7 +9,7 @@ public class TodoList {
 	}
 	
 	public void setDate() {
-	
+		this.date = date;
 	}
 	
 	public String getDue() {
@@ -17,7 +17,7 @@ public class TodoList {
 	}
 	
 	public void setDue() {
-		
+		this.due = due;
 	}
 	
 	public String getDescription() {
@@ -25,6 +25,6 @@ public class TodoList {
 	}
 	
 	public void setDescription() {
-		
+		this.description = description;
 	}
 }
