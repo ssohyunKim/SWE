@@ -1,10 +1,11 @@
 
-public class TodoList_Manager extends Manage{
+public class TodoList_Manager extends Asset_Manager{
 
+	boolean isSuccess = true;
 	@Override
 	boolean create(Object ob) {
 		// TODO 자동 생성된 메소드 스텁
-		return false;
+		return isSuccess;
 	}
 
 	@Override
@@ -16,13 +17,13 @@ public class TodoList_Manager extends Manage{
 	@Override
 	boolean update(Object ob) {
 		// TODO 자동 생성된 메소드 스텁
-		return false;
+		return isSuccess;
 	}
 
 	@Override
 	boolean delete(Object ob) {
 		// TODO 자동 생성된 메소드 스텁
-		return false;
+		return isSuccess;
 	}
 
 	@Override
