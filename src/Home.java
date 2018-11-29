@@ -11,10 +11,10 @@ public class Home {
 	//private static Appointment appointment;
 	
 	public static void main(String[] args) {
-		homeMenu();
+		selectHomeMenu();
 	}
 	
-	static void homeMenu() {
+	static void selectHomeMenu() {
 		
 		boolean flag = true;
 		//todolist = new Manage_TodoList();
