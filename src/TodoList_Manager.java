@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TodoList_Manager extends Asset_Manager{
@@ -9,6 +10,9 @@ public class TodoList_Manager extends Asset_Manager{
 	static final int DELETE = 4;
 	static final int GOHOME = 5;
 	boolean isSuccess = true;
+	protected ArrayList<TodoList> todolists = new ArrayList<TodoList>();
+	private int number;
+	int updateNumber;
 	
 	public void manageTodoList() {
 		boolean isSubMenu = true;
@@ -19,9 +23,9 @@ public class TodoList_Manager extends Asset_Manager{
 			subMenuChoice = scanner.nextInt();
 
 			if (subMenuChoice == CREATE) {
-				System.out.println("CREATE");
+				create(todolists);
 			} else if (subMenuChoice == VIEW) {
-				System.out.println("VIEW");
+				view();
 			} else if (subMenuChoice == UPDATE) {
 				System.out.println("UPDATE");
 			} else if (subMenuChoice == DELETE) {
@@ -37,13 +41,31 @@ public class TodoList_Manager extends Asset_Manager{
 	
 	@Override
 	boolean create(Object ob) {
-		// TODO 자동 생성된 메소드 스텁
+		TodoList todolist = new TodoList();
+		System.out.print("Date(yy-mm-dd): ");
+		todolist.setDate(scanner.next());
+		System.out.print("Due(yy-mm-dd): ");
+		todolist.setDue(scanner.next());
+		scanner.nextLine();//이거 안넣으면 잘 안됩니다ㅠㅠ
+		System.out.print("Description: ");
+		todolist.setDescription(scanner.nextLine());
+		todolists.add(todolist);
+		System.out.println("Successfully Created!!");
 		return isSuccess;
 	}
 
 	@Override
 	void view() {
-		// TODO 자동 생성된 메소드 스텁
+		System.out.printf("%1$3s %2$10s %3$15s %4$30s\n", "No.", "Date", "Due", "Description");
+		System.out.println("----------------------------------------------------------------------");
+		for (int i = 0; i < todolists.size(); i++) {
+			TodoList todolist = todolists.get(i);
+		}
+		int number = 1;
+		for (TodoList todolist : todolists) {
+			System.out.printf("%1$3d/ %2$10s/ %3$15s/ %4$30s\n", number++, todolist.getDate(),
+					todolist.getDue(), todolist.getDescription());
+		}
 		
 	}
 
@@ -55,7 +77,10 @@ public class TodoList_Manager extends Asset_Manager{
 
 	@Override
 	boolean delete(Object ob) {
-		// TODO 자동 생성된 메소드 스텁
+		todolists.remove(number - 1);
+		number = 0;
+		System.out.println("삭제 완료");
+
 		return isSuccess;
 	}
 
