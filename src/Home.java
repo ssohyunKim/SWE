@@ -5,12 +5,10 @@ public class Home {
 	private static int homeChoice;
 	
 	static Scanner scanner = new Scanner(System.in);
-	//private static Contact contact;
-	//private static Manage_TodoList todolist;
-	//private static Appointment appointment;
+
 	static Contact_Manager contactManager;
 	static TodoList_Manager todolistManager;
-
+        static Appointment_Manager appointmentManager;
 	
 	public static void main(String[] args) {
 		selectHomeMenu();
@@ -48,7 +46,9 @@ public class Home {
 			} else if (homeChoice == 3) {
 				//appointment
 				System.out.println("+-----Appointment-----+");
-
+				appointmentManager = new Appointment_Manager();
+				appointmentManager.showSubMenu();
+				appointmentManager.selectSubMenu();
 
 			} else if (homeChoice == 4) {
 				System.out.println("*** Thank You! Bye! ***");
