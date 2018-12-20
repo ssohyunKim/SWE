@@ -6,6 +6,7 @@ abstract class Asset_Manager {
 	abstract void goHome();
 	
 	void showSubMenu() {
+<<<<<<< HEAD
 		System.out.println("+------ Sub Menu -----+");
 		System.out.println("|   1. Create         |");
 		System.out.println("|   2. View           |");
@@ -16,5 +17,10 @@ abstract class Asset_Manager {
 //		System.out.println("+--------------------------Sub Menu--------------------------+");
 //		System.out.println("| 1) Create | 2) View  | 3) Update | 4) Delete | 5) Go Home  |");
 //		System.out.println("+------------------------------------------------------------+");
+=======
+		System.out.println("+--------------------------Sub Menu-----------------------+");
+		System.out.println(" | 1) Create | 2) View | 3) Update | 4) Delete | 5) Go Home |");
+		System.out.println("+-------------------------------------------------------------+");
+>>>>>>> 00d632f0a8bfc9924376a860cb2f97cd6ec164a2
 	}
 }
