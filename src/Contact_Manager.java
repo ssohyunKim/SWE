@@ -80,7 +80,6 @@ public class Contact_Manager extends Asset_Manager{
 		updateNumber = scanner.nextInt();
 		if (updateNumber > 0 && updateNumber <= contacts.size()) {
 			Contact contact = contacts.get(updateNumber - 1);
-			System.out.println("*If you don't want to update, just press enter and skip input.*");
 			System.out.print("Name: ");
 			modifiedValue = scanner.next();
 			if (modifiedValue.length() > 0) {
@@ -117,7 +116,7 @@ public class Contact_Manager extends Asset_Manager{
 
 	@Override
 	void goHome() {
-		// TODO ÀÚµ¿ »ý¼ºµÈ ¸Þ¼Òµå ½ºÅÓ
+		// TODO ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½
 		System.out.println("Go to previous menu!!\n");
 		
 	}
