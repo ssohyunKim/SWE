@@ -9,6 +9,9 @@ public class Home {
 	//private static Contact contact;
 	//private static Manage_TodoList todolist;
 	//private static Appointment appointment;
+	static Contact_Manager contactManager;
+	static TodoList_Manager todolistManager;
+
 	
 	public static void main(String[] args) {
 		selectHomeMenu();
@@ -20,31 +23,35 @@ public class Home {
 		//todolist = new Manage_TodoList();
 		
 		while(flag) {
-			System.out.println("+---------------------+");
-			System.out.println(" |  1. Contact              |");
-			System.out.println(" |  2. To-do List          |");
-			System.out.println(" |  3. Appointment     |");
-			System.out.println(" |  4. Quit                   |");
+			System.out.println("+----- Home Menu -----+");
+			System.out.println("|   1. Contact        |");
+			System.out.println("|   2. To-do List     |");
+			System.out.println("|   3. Appointment    |");
+			System.out.println("|   4. Quit           |");
 			System.out.println("+---------------------+");
 
 			homeChoice = scanner.nextInt();
 
 			if (homeChoice == 1) {
 				//contact
-				System.out.println("+------Contact------+");
+				System.out.println("+-------Contact-------+");
+				contactManager = new Contact_Manager();
+				contactManager.manageContact();
+				
 
 			} else if (homeChoice == 2) {
 				//todolist
-				System.out.println("+-----To-do List-----+");
-				
+				System.out.println("+------To-do List-----+");
+				todolistManager = new TodoList_Manager();
+				todolistManager.manageTodoList();		
 			
 			} else if (homeChoice == 3) {
 				//appointment
-				System.out.println("+---Appointment---+");
+				System.out.println("+-----Appointment-----+");
 
 
 			} else if (homeChoice == 4) {
-				System.out.println("***Thank You! Bye!***");
+				System.out.println("*** Thank You! Bye! ***");
 				flag = false;
 			}
 		}

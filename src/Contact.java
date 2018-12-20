@@ -9,7 +9,7 @@ public class Contact {
 	}
 	
 	public void setName(String name) {
-		
+		this.name = name;
 	}
 	
 	public String getPhone() {
@@ -17,13 +17,13 @@ public class Contact {
 	}
 	
 	public void setPhone(String phone) {
-		
+		this.phone = phone;
 	}
 	public String getEmail() {
 		return email;
 	}
 	
-	public void setEmail(String Email) {
-		
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

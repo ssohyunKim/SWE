@@ -1,4 +1,3 @@
-
 public class TodoList {
 	String date;
 	String due;
@@ -8,7 +7,7 @@ public class TodoList {
 		return date;
 	}
 	
-	public void setDate() {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	
@@ -16,7 +15,7 @@ public class TodoList {
 		return due;
 	}
 	
-	public void setDue() {
+	public void setDue(String due) {
 		this.due = due;
 	}
 	
@@ -24,7 +23,7 @@ public class TodoList {
 		return description;
 	}
 	
-	public void setDescription() {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 }
