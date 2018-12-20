@@ -80,21 +80,13 @@ public class TodoList_Manager extends Asset_Manager {
 			TodoList todolist = todolists.get(updateNumber - 1);
 			System.out.println("*If you don't want to update, just press enter and skip input.*");
 			System.out.print("Date: ");
-<<<<<<< HEAD
-			modifiedValue = scanner.nextLine();
-=======
 			modifiedValue = scanner.next();
->>>>>>> 00d632f0a8bfc9924376a860cb2f97cd6ec164a2
 			if (modifiedValue.length() > 0) {
 				todolist.setDate(modifiedValue);
 			}
 			scanner.nextLine();
 			System.out.print("Due: ");
-<<<<<<< HEAD
-			modifiedValue = scanner.nextLine();
-=======
 			modifiedValue = scanner.next();
->>>>>>> 00d632f0a8bfc9924376a860cb2f97cd6ec164a2
 			if (modifiedValue.length() > 0) {
 				todolist.setDue(modifiedValue);
 			}
@@ -125,11 +117,7 @@ public class TodoList_Manager extends Asset_Manager {
 
 	@Override
 	void goHome() {
-<<<<<<< HEAD
 		// TODO ÀÚµ¿ »ý¼ºµÈ ¸Þ¼Òµå ½ºÅÓ
-=======
-		// TODO ìžë™ ìƒì„±ëœ ë©”ì†Œë“œ ìŠ¤í…
->>>>>>> 00d632f0a8bfc9924376a860cb2f97cd6ec164a2
 
 	}
 
