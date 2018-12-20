@@ -11,8 +11,9 @@ public class TodoList_Manager extends Asset_Manager{
 	static final int GOHOME = 5;
 	boolean isSuccess = true;
 	protected ArrayList<TodoList> todolists = new ArrayList<TodoList>();
-	private int number;
+	private int deleteNumber;
 	int updateNumber;
+	private String modifiedValue;
 	
 	public void manageTodoList() {
 		boolean isSubMenu = true;
@@ -46,7 +47,7 @@ public class TodoList_Manager extends Asset_Manager{
 		todolist.setDate(scanner.next());
 		System.out.print("Due(yy-mm-dd): ");
 		todolist.setDue(scanner.next());
-		scanner.nextLine();//이거 안넣으면 잘 안됩니다ㅠㅠ
+		scanner.nextLine();
 		System.out.print("Description: ");
 		todolist.setDescription(scanner.nextLine());
 		todolists.add(todolist);
@@ -71,14 +72,38 @@ public class TodoList_Manager extends Asset_Manager{
 
 	@Override
 	boolean update(Object ob) {
-		// TODO 자동 생성된 메소드 스텁
-		return isSuccess;
+		System.out.print("Number to update: ");
+		updateNumber = scanner.nextInt();
+		if (updateNumber > 0 && updateNumber <= todolists.size()) {
+			TodoList todolist = todolists.get(updateNumber - 1);
+			System.out.println("*If you don't want to update, just press enter and skip input.*");
+			System.out.print("Date: ");
+			modifiedValue = scanner.next();
+			if (modifiedValue.length() > 0) {
+				todolist.setDate(modifiedValue);
+			}
+			scanner.nextLine();
+			System.out.print("Due: ");
+			modifiedValue = scanner.next();
+			if (modifiedValue.length() > 0) {
+				todolist.setDue(modifiedValue);
+			}
+			scanner.nextLine();
+			System.out.print("Description: ");
+			modifiedValue = scanner.nextLine();
+			if (modifiedValue.length() > 0) {
+				todolist.setDescription(modifiedValue);
+			}
+			System.out.println("Successfully Modified!!\n");
+		}
+			return isSuccess;
+		
 	}
 
 	@Override
 	boolean delete(Object ob) {
-		todolists.remove(number - 1);
-		number = 0;
+		todolists.remove(deleteNumber - 1);
+		deleteNumber = 0;
 		System.out.println("삭제 완료");
 
 		return isSuccess;
