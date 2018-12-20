@@ -28,9 +28,9 @@ public class TodoList_Manager extends Asset_Manager {
 			} else if (subMenuChoice == VIEW) {
 				view();
 			} else if (subMenuChoice == UPDATE) {
-				System.out.println("UPDATE");
+				update(todolists);
 			} else if (subMenuChoice == DELETE) {
-				System.out.println("DELETE");
+				delete(todolists);
 			} else if (subMenuChoice == GOHOME) {
 				System.out.println("GOHOME");
 				break;
