@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TodoList_Manager extends Asset_Manager{
+public class TodoList_Manager extends Asset_Manager {
 	private Scanner scanner = new Scanner(System.in);
 	private static int subMenuChoice = 0;
 	static final int CREATE = 1;
@@ -14,7 +14,7 @@ public class TodoList_Manager extends Asset_Manager{
 	private int deleteNumber;
 	int updateNumber;
 	private String modifiedValue;
-	
+
 	public void manageTodoList() {
 		boolean isSubMenu = true;
 
@@ -39,7 +39,7 @@ public class TodoList_Manager extends Asset_Manager{
 			}
 		}
 	}
-	
+
 	@Override
 	boolean create(Object ob) {
 		TodoList todolist = new TodoList();
@@ -63,11 +63,13 @@ public class TodoList_Manager extends Asset_Manager{
 			TodoList todolist = todolists.get(i);
 		}
 		int number = 1;
+		if (todolists.size() == 0)
+			System.out.println("EMPTY!!");
 		for (TodoList todolist : todolists) {
-			System.out.printf("%1$3d/ %2$10s/ %3$15s/ %4$30s\n", number++, todolist.getDate(),
-					todolist.getDue(), todolist.getDescription());
+			System.out.printf("%1$3d/ %2$10s/ %3$15s/ %4$30s\n", number++, todolist.getDate(), todolist.getDue(),
+					todolist.getDescription());
 		}
-		
+
 	}
 
 	@Override
@@ -96,23 +98,27 @@ public class TodoList_Manager extends Asset_Manager{
 			}
 			System.out.println("Successfully Modified!!\n");
 		}
-			return isSuccess;
-		
+		return isSuccess;
+
 	}
 
 	@Override
 	boolean delete(Object ob) {
-		todolists.remove(deleteNumber - 1);
-		deleteNumber = 0;
-		System.out.println("삭제 완료");
-
+		System.out.print("Number to delete: ");
+		deleteNumber = scanner.nextInt();
+		if (deleteNumber > 0 && deleteNumber <= todolists.size()) {
+			// TodoList todolist = todolists.get(deleteNumber - 1);
+			todolists.remove(deleteNumber - 1);
+			deleteNumber = 0;
+			System.out.println("Successfully Deleted");
+		}
 		return isSuccess;
 	}
 
 	@Override
 	void goHome() {
 		// TODO 자동 생성된 메소드 스텁
-		
+
 	}
 
 }
