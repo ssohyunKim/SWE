@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.text.*;
+import java.util.*;
 
 public class TodoList_Manager extends Asset_Manager {
 	private Scanner scanner = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class TodoList_Manager extends Asset_Manager {
 			assetManager.showSubMenu();
 			subMenuChoice = scanner.nextInt();
 			TodoList todolist = new TodoList();
-			
+
 			if (subMenuChoice == CREATE) {
 				System.out.print("Date(yy-mm-dd): ");
 				String date = scanner.next();
@@ -33,19 +33,23 @@ public class TodoList_Manager extends Asset_Manager {
 				scanner.nextLine();
 				System.out.print("Description: ");
 				String description = scanner.nextLine();
-				
 				create(date, due, description);
-				
 			} else if (subMenuChoice == VIEW) {
 				view();
 			} else if (subMenuChoice == UPDATE) {
+				if (todolists.size() == 0) {
+					System.out.println("Don't exist!!");
+					return;
+				}
 				System.out.print("Number to update: ");
 				updateNumber = scanner.nextInt();
-				if(updateNumber <= 0 && updateNumber > todolists.size())
+				if (updateNumber <= 0 && updateNumber > todolists.size())
 					break;
-				
+				if(updateNumber <=0 || updateNumber > todolists.size() ) {
+					System.out.println("Invalid Number");
+					break;
+				}
 				todolist = todolists.get(updateNumber - 1);
-					
 				System.out.print("Date(yy-mm-dd): ");
 				String new_date = scanner.next();
 				scanner.nextLine();
@@ -54,11 +58,14 @@ public class TodoList_Manager extends Asset_Manager {
 				scanner.nextLine();
 				System.out.print("Desciption: ");
 				String new_description = scanner.nextLine();
-					
+
 				update(todolist, new_date, new_due, new_description);
-				
+
 			} else if (subMenuChoice == DELETE) {
-				delete(todolists);
+				System.out.print("Number to delete: ");
+				int deleteNumber = scanner.nextInt();
+				scanner.nextLine();
+				delete(deleteNumber);
 			} else if (subMenuChoice == GOHOME) {
 				goHome();
 				break;
@@ -70,6 +77,22 @@ public class TodoList_Manager extends Asset_Manager {
 
 	@Override
 	boolean create(String date, String due, String description) {
+
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+			dateFormat.setLenient(false);
+			Date inputDate = dateFormat.parse(date);
+			Date dueDate = dateFormat.parse(due);
+			long calDate = inputDate.getTime() - dueDate.getTime();
+			long calDateDays = calDate / (24*60*60*1000);
+			if(calDateDays > 0) {
+				System.out.println("Your Due date should be after Date.");
+				return false;
+			}
+		} catch (ParseException e) {
+			System.out.println("Date format Effor!! (yy-MM-dd)");
+			return false;
+		}
 		TodoList todolist = new TodoList();
 		todolist.setDate(date);
 		todolist.setDue(due);
@@ -96,29 +119,53 @@ public class TodoList_Manager extends Asset_Manager {
 	}
 
 	@Override
-	boolean update(Object todolist, String date, String due, String description) {
-		((TodoList)todolist).setDate(date);
-		((TodoList)todolist).setDue(due);
-		((TodoList)todolist).setDescription(description);
+	boolean update(Object todolist, String newDate, String newDue, String description) {
+		if (todolist == null) {
+			System.out.println("Empty");
+			return false;
+		}
+		/*if(updateNumber <=0 || updateNumber > todolists.size() ) {
+			System.out.println("Invalid Number");
+			return false;
+		}*/
+		
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+			dateFormat.setLenient(false);
+			Date inputDate = dateFormat.parse(newDate);
+			Date dueDate = dateFormat.parse(newDue);
+			long calDate = inputDate.getTime() - dueDate.getTime();
+			long calDateDays = calDate / (24*60*60*1000);
+			if(calDateDays > 0) {
+				System.out.println("Your Due date should be after register date.");
+				return false;
+			}
+				
+		} catch (ParseException e) {
+			System.out.println("Date Format Error!! (yy-mm-dd)");
+			return false;
+		}
+		((TodoList) todolist).setDate(newDate);
+		((TodoList) todolist).setDue(newDue);
+		((TodoList) todolist).setDescription(description);
 
 		return isSuccess;
 	}
 
 	@Override
-	boolean delete(Object ob) {
-		System.out.print("Number to delete: ");
-		deleteNumber = scanner.nextInt();
-		if (deleteNumber > 0 && deleteNumber <= todolists.size()) {
-			todolists.remove(deleteNumber - 1);
-			deleteNumber = 0;
-			System.out.println("Successfully Deleted");
+	boolean delete(int deleteNumber) {
+		if (deleteNumber <= 0 || deleteNumber > todolists.size()) {
+			System.out.println("Empty");
+			return false;
 		}
-		return isSuccess;
+		TodoList todolist = todolists.get(deleteNumber - 1);
+		todolists.remove(todolist);
+		System.out.println("Successfully Deleted");
+		return true;
 	}
 
 	@Override
 	void goHome() {
 		System.out.println("GO HOME");
 	}
-
 }
