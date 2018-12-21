@@ -4,6 +4,16 @@ public class Appointment {
 	String location;
 	String persons;
 	
+	Appointment(){
+		
+	}
+	
+	Appointment(String date, String location, String persons){
+		this.date = date;
+		this.location = location;
+		this.persons = persons;
+	}
+	
 	String getDate() {
 		return date;
 	}

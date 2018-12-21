@@ -16,23 +16,23 @@ class Appointment_ManagerTest {
 	
 	@BeforeAll
 	static void initAll() {
-		appointments.add(new Appointment("18-12-20","íŒŒìŠ¤ì¿ ì¹˜","ì˜¤ì§€ì›"));
-		appointments.add(new Appointment("18-12-21","ë¶ˆê´‘","Todd"));
-		appointments.add(new Appointment("18-12-22","ê°•ë‚¨","ë°•ì˜¨ìœ "));
+		appointments.add(new Appointment("18-12-20","ÆÄ½ºÄíÄ¡","¿ÀÁö¿ø"));
+		appointments.add(new Appointment("18-12-21","ºÒ±¤","Todd"));
+		appointments.add(new Appointment("18-12-22","°­³²","¹Ú¿ÂÀ¯"));
 	}
 	
 	@Test
 	void testCreate() {
-		assertTrue(appointmentManager.create("18-12-21","ëª©ë™","ì‹ ìˆ˜ì‚°") == SUCCESS);
-		assertTrue(appointmentManager.create("181221","ëª©ë™","ì‹ ìˆ˜ì‚°") == FAIL);
-		assertTrue(appointmentManager.create("18-12-50","ëª©ë™","ì‹ ìˆ˜ì‚°") == FAIL);
+		assertTrue(appointmentManager.create("18-12-21","¸ñµ¿","½Å¼ö»ê") == SUCCESS);
+		assertTrue(appointmentManager.create("181221","¸ñµ¿","½Å¼ö»ê") == FAIL);
+		assertTrue(appointmentManager.create("18-12-50","¸ñµ¿","½Å¼ö»ê") == FAIL);
 	}
 
 	@Test
 	void testUpdate() {
 		assertTrue(appointmentManager.update(appointments.get(0), "", "", "") == FAIL);
-		assertTrue(appointmentManager.update(appointments.get(0), "18-12-24", "ì—°ë‚¨ë™", "ê°€í˜„") == SUCCESS);
-		assertTrue(appointmentManager.update(null, "18-12-24", "ì—°ë‚¨ë™", "ê°€í˜„") == FAIL);
+		assertTrue(appointmentManager.update(appointments.get(0), "18-12-24", "¿¬³²µ¿", "°¡Çö") == SUCCESS);
+		assertTrue(appointmentManager.update(null, "18-12-24", "¿¬³²µ¿", "°¡Çö") == FAIL);
 	}
 
 	@Test

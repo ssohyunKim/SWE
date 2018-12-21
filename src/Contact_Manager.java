@@ -57,7 +57,10 @@ public class Contact_Manager extends Asset_Manager{
 				update(contact, new_name, new_phone, new_email);
 				
 			} else if (subMenuChoice == DELETE) {
-				delete(contacts);
+				System.out.print("Number to delete: ");
+				int deleteNumber = scanner.nextInt();
+				scanner.nextLine();
+				delete(deleteNumber);
 			} else if (subMenuChoice == GOHOME) {
 				goHome();
 				break;
@@ -105,22 +108,20 @@ public class Contact_Manager extends Asset_Manager{
 	}
 
 	@Override
-	boolean delete(Object ob) {
-		System.out.print("Number to delete: ");
-		deleteNumber = scanner.nextInt();
-		if (deleteNumber > 0 && deleteNumber <= contacts.size()) {
-			contacts.remove(deleteNumber - 1);
-			deleteNumber = 0;
-			System.out.println("Successfully Deleted!!\n");
+	boolean delete(int delete_no) {
+		if(delete_no <=0 || delete_no > contacts.size()) {
+			System.out.println("Don't exist!!");
+			return false;
 		}
+		Contact contact = contacts.get(delete_no - 1);
+		contacts.remove(contact);
+		System.out.println("Successfully deleted!!");
 		return isSuccess;
 	}
 
 	@Override
 	void goHome() {
-
 		System.out.println("Go to previous menu!!\n");
-		
 	}
 
 }
