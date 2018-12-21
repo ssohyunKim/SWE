@@ -90,7 +90,7 @@ public class TodoList_Manager extends Asset_Manager {
 				return false;
 			}
 		} catch (ParseException e) {
-			System.out.println("Date format Effor!! (yy-MM-dd)");
+			System.out.println("Date format Error!! (yy-MM-dd)");
 			return false;
 		}
 		TodoList todolist = new TodoList();
@@ -123,12 +123,7 @@ public class TodoList_Manager extends Asset_Manager {
 		if (todolist == null) {
 			System.out.println("Empty");
 			return false;
-		}
-		/*if(updateNumber <=0 || updateNumber > todolists.size() ) {
-			System.out.println("Invalid Number");
-			return false;
-		}*/
-		
+		}		
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
 			dateFormat.setLenient(false);
@@ -155,7 +150,7 @@ public class TodoList_Manager extends Asset_Manager {
 	@Override
 	boolean delete(int deleteNumber) {
 		if (deleteNumber <= 0 || deleteNumber > todolists.size()) {
-			System.out.println("Empty");
+			System.out.println("Invalid");
 			return false;
 		}
 		TodoList todolist = todolists.get(deleteNumber - 1);
