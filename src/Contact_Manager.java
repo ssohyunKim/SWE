@@ -20,7 +20,7 @@ public class Contact_Manager extends Asset_Manager{
 		boolean isSubMenu = true;
 
 		while (isSubMenu) {
-			Asset_Manager assetManager = new _Manager();
+			Asset_Manager assetManager = new Contact_Manager();
 			assetManager.showSubMenu();
 			subMenuChoice = scanner.nextInt();
 			Contact contact = new Contact();
