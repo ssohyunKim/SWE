@@ -5,19 +5,19 @@ class TodoList_ManagerTest {
 
 	@Test
 	void testCreate() {
-		fail("ì•„ì§ êµ¬í˜„ë˜ì§€ ì•ŠìŒ");
+		fail("¾ÆÁ÷ ±¸ÇöµÇÁö ¾ÊÀ½");
 	}
 
 	@Test
 	void testUpdate() {
-		fail("ì•„ì§ êµ¬í˜„ë˜ì§€ ì•ŠìŒ");
+		fail("¾ÆÁ÷ ±¸ÇöµÇÁö ¾ÊÀ½");
 	}
 
 	@Test
 	void testDelete() {
 		TodoList todolist = new TodoList();
 
-		fail("ì•„ì§ êµ¬í˜„ë˜ì§€ ì•ŠìŒ");
+		fail("¾ÆÁ÷ ±¸ÇöµÇÁö ¾ÊÀ½");
 	}
 
 }

@@ -1,7 +1,7 @@
 abstract class Asset_Manager {
-	abstract boolean create(Object ob);
+	abstract boolean create(String parm1, String parm2, String parm3);
 	abstract void view();
-	abstract boolean update(Object ob);
+	abstract boolean update(Object ob, String parm1, String parm2, String parm3);
 	abstract boolean delete(Object ob);
 	abstract void goHome();
 	
@@ -13,8 +13,6 @@ abstract class Asset_Manager {
 		System.out.println("|   4. Delete         |");
 		System.out.println("|   5. Home           |");
 		System.out.println("+---------------------+");
-//		System.out.println("+--------------------------Sub Menu--------------------------+");
-//		System.out.println("| 1) Create | 2) View  | 3) Update | 4) Delete | 5) Go Home  |");
-//		System.out.println("+------------------------------------------------------------+");
+
 	}
 }

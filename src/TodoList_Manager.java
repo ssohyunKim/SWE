@@ -22,13 +22,41 @@ public class TodoList_Manager extends Asset_Manager {
 			Asset_Manager assetManager = new TodoList_Manager();
 			assetManager.showSubMenu();
 			subMenuChoice = scanner.nextInt();
-
+			TodoList todolist = new TodoList();
+			
 			if (subMenuChoice == CREATE) {
-				create(todolists);
+				System.out.print("Date(yy-mm-dd): ");
+				String date = scanner.next();
+				scanner.nextLine();
+				System.out.print("Due(yy-mm-dd): ");
+				String due = scanner.next();
+				scanner.nextLine();
+				System.out.print("Description: ");
+				String description = scanner.nextLine();
+				
+				create(date, due, description);
+				
 			} else if (subMenuChoice == VIEW) {
 				view();
 			} else if (subMenuChoice == UPDATE) {
-				update(todolists);
+				System.out.print("Number to update: ");
+				updateNumber = scanner.nextInt();
+				if(updateNumber <= 0 && updateNumber > todolists.size())
+					break;
+				
+				todolist = todolists.get(updateNumber - 1);
+					
+				System.out.print("Date(yy-mm-dd): ");
+				String new_date = scanner.next();
+				scanner.nextLine();
+				System.out.print("Due(yy-mm-dd): ");
+				String new_due = scanner.next();
+				scanner.nextLine();
+				System.out.print("Desciption: ");
+				String new_description = scanner.nextLine();
+					
+				update(todolist, new_date, new_due, new_description);
+				
 			} else if (subMenuChoice == DELETE) {
 				delete(todolists);
 			} else if (subMenuChoice == GOHOME) {
@@ -41,15 +69,11 @@ public class TodoList_Manager extends Asset_Manager {
 	}
 
 	@Override
-	boolean create(Object ob) {
+	boolean create(String date, String due, String description) {
 		TodoList todolist = new TodoList();
-		System.out.print("Date(yy-mm-dd): ");
-		todolist.setDate(scanner.next());
-		System.out.print("Due(yy-mm-dd): ");
-		todolist.setDue(scanner.next());
-		scanner.nextLine();
-		System.out.print("Description: ");
-		todolist.setDescription(scanner.nextLine());
+		todolist.setDate(date);
+		todolist.setDue(due);
+		todolist.setDescription(description);
 		todolists.add(todolist);
 		System.out.println("Successfully Created!!");
 		return isSuccess;
@@ -72,30 +96,11 @@ public class TodoList_Manager extends Asset_Manager {
 	}
 
 	@Override
-	boolean update(Object ob) {
-		System.out.print("Number to update: ");
-		updateNumber = scanner.nextInt();
-		if (updateNumber > 0 && updateNumber <= todolists.size()) {
-			TodoList todolist = todolists.get(updateNumber - 1);
-			System.out.print("Date: ");
-			modifiedValue = scanner.next();
-			if (modifiedValue.length() > 0) {
-				todolist.setDate(modifiedValue);
-			}
-			scanner.nextLine();
-			System.out.print("Due: ");
-			modifiedValue = scanner.next();
-			if (modifiedValue.length() > 0) {
-				todolist.setDue(modifiedValue);
-			}
-			scanner.nextLine();
-			System.out.print("Description: ");
-			modifiedValue = scanner.nextLine();
-			if (modifiedValue.length() > 0) {
-				todolist.setDescription(modifiedValue);
-			}
-			System.out.println("Successfully Modified!!\n");
-		}
+	boolean update(Object todolist, String date, String due, String description) {
+		((TodoList)todolist).setDate(date);
+		((TodoList)todolist).setDue(due);
+		((TodoList)todolist).setDescription(description);
+
 		return isSuccess;
 	}
 

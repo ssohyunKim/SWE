@@ -23,13 +23,39 @@ public class Contact_Manager extends Asset_Manager{
 			Asset_Manager assetManager = new TodoList_Manager();
 			assetManager.showSubMenu();
 			subMenuChoice = scanner.nextInt();
+			Contact contact = new Contact();
 
 			if (subMenuChoice == CREATE) {
-				create(contacts);
+				System.out.print("Name: ");
+				String name = scanner.next();
+				scanner.nextLine();
+				System.out.print("Phone: ");
+				String phone = scanner.next();
+				scanner.nextLine();
+				System.out.print("Email: ");
+				String email = scanner.nextLine();
+				create(name, phone, email);
 			} else if (subMenuChoice == VIEW) {
 				view();
 			} else if (subMenuChoice == UPDATE) {
-				update(contacts);
+				System.out.print("Number to update: ");
+				updateNumber = scanner.nextInt();
+				if(updateNumber <= 0 && updateNumber > contacts.size())
+					break;
+				
+				contact  = contacts.get(updateNumber - 1);
+					
+				System.out.print("Name: ");
+				String new_name = scanner.next();
+				scanner.nextLine();
+				System.out.print("Phone: ");
+				String new_phone = scanner.next();
+				scanner.nextLine();
+				System.out.print("E-mail: ");
+				String new_email = scanner.nextLine();
+					
+				update(contact, new_name, new_phone, new_email);
+				
 			} else if (subMenuChoice == DELETE) {
 				delete(contacts);
 			} else if (subMenuChoice == GOHOME) {
@@ -42,16 +68,11 @@ public class Contact_Manager extends Asset_Manager{
 	}
 	
 	@Override
-	boolean create(Object ob) {
+	boolean create(String name, String phone, String email) {
 		Contact contact = new Contact();
-		System.out.print("Name: ");
-		contact.setName(scanner.next());
-		scanner.nextLine();
-		System.out.print("Phone: ");
-		contact.setPhone(scanner.next());
-		scanner.nextLine();
-		System.out.print("Email: ");
-		contact.setEmail(scanner.nextLine());
+		contact.setName(name);
+		contact.setPhone(phone);
+		contact.setEmail(email);
 		contacts.add(contact);
 		System.out.println("Successfully Created!!\n");
 		return isSuccess;
@@ -75,30 +96,11 @@ public class Contact_Manager extends Asset_Manager{
 	}
 
 	@Override
-	boolean update(Object ob) {
-		System.out.print("Number to update: ");
-		updateNumber = scanner.nextInt();
-		if (updateNumber > 0 && updateNumber <= contacts.size()) {
-			Contact contact = contacts.get(updateNumber - 1);
-			System.out.print("Name: ");
-			modifiedValue = scanner.next();
-			if (modifiedValue.length() > 0) {
-				contact.setName(modifiedValue);
-			}
-			scanner.nextLine();
-			System.out.print("Phone: ");
-			modifiedValue = scanner.next();
-			if (modifiedValue.length() > 0) {
-				contact.setPhone(modifiedValue);
-			}
-			scanner.nextLine();
-			System.out.print("E-mail: ");
-			modifiedValue = scanner.nextLine();
-			if (modifiedValue.length() > 0) {
-				contact.setEmail(modifiedValue);
-			}
-			System.out.println("Successfully Modified!!\n");
-		}
+	boolean update(Object contact, String name, String phone, String email) {
+		((Contact)contact).setName(name);
+		((Contact)contact).setPhone(phone);
+		((Contact)contact).setEmail(email);
+		
 		return isSuccess;
 	}
 
