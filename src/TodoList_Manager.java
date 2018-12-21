@@ -32,7 +32,7 @@ public class TodoList_Manager extends Asset_Manager {
 			} else if (subMenuChoice == DELETE) {
 				delete(todolists);
 			} else if (subMenuChoice == GOHOME) {
-				System.out.println("GOHOME");
+				goHome();
 				break;
 			} else {
 				System.out.println("Choose valid sub menu!");
@@ -66,10 +66,9 @@ public class TodoList_Manager extends Asset_Manager {
 		if (todolists.size() == 0)
 			System.out.println("EMPTY!!");
 		for (TodoList todolist : todolists) {
-			System.out.printf("%1$3d/ %2$10s/ %3$15s/ %4$30s\n", number++, todolist.getDate(), todolist.getDue(),
+			System.out.printf("%1$3d %2$10s %3$15s %4$30s\n", number++, todolist.getDate(), todolist.getDue(),
 					todolist.getDescription());
 		}
-
 	}
 
 	@Override
@@ -78,7 +77,6 @@ public class TodoList_Manager extends Asset_Manager {
 		updateNumber = scanner.nextInt();
 		if (updateNumber > 0 && updateNumber <= todolists.size()) {
 			TodoList todolist = todolists.get(updateNumber - 1);
-			System.out.println("*If you don't want to update, just press enter and skip input.*");
 			System.out.print("Date: ");
 			modifiedValue = scanner.next();
 			if (modifiedValue.length() > 0) {
@@ -99,7 +97,6 @@ public class TodoList_Manager extends Asset_Manager {
 			System.out.println("Successfully Modified!!\n");
 		}
 		return isSuccess;
-
 	}
 
 	@Override
@@ -107,7 +104,6 @@ public class TodoList_Manager extends Asset_Manager {
 		System.out.print("Number to delete: ");
 		deleteNumber = scanner.nextInt();
 		if (deleteNumber > 0 && deleteNumber <= todolists.size()) {
-			// TodoList todolist = todolists.get(deleteNumber - 1);
 			todolists.remove(deleteNumber - 1);
 			deleteNumber = 0;
 			System.out.println("Successfully Deleted");
@@ -117,8 +113,7 @@ public class TodoList_Manager extends Asset_Manager {
 
 	@Override
 	void goHome() {
-		// TODO 자동 생성된 메소드 스텁
-
+		System.out.println("GO HOME");
 	}
 
 }

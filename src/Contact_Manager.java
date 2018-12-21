@@ -116,6 +116,7 @@ public class Contact_Manager extends Asset_Manager{
 
 	@Override
 	void goHome() {
+
 		System.out.println("Go to previous menu!!\n");
 		
 	}
