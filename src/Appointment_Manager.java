@@ -70,9 +70,6 @@ public class Appointment_Manager extends Asset_Manager{
 				System.out.print("Number to delete: ");
 				int deleteNumber = scanner.nextInt();
 				scanner.nextLine();
-				if(deleteNumber <= 0 && deleteNumber > appointments.size())
-					break;
-				
 				delete(deleteNumber);
 				break;
 			case GOHOME:
