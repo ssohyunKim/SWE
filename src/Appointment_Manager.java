@@ -73,7 +73,7 @@ public class Appointment_Manager extends Asset_Manager{
 				if(deleteNumber <= 0 && deleteNumber > appointments.size())
 					break;
 				
-				delete(appointment);
+				delete(deleteNumber);
 				break;
 			case GOHOME:
 				goHome();
