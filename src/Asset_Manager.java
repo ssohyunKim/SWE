@@ -2,7 +2,7 @@ abstract class Asset_Manager {
 	abstract boolean create(String parm1, String parm2, String parm3);
 	abstract void view();
 	abstract boolean update(Object ob, String parm1, String parm2, String parm3);
-	abstract boolean delete(Object ob);
+	abstract boolean delete(int no);
 	abstract void goHome();
 	
 	void showSubMenu() {
